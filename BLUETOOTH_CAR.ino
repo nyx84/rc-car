@@ -28,14 +28,15 @@ AF_DCMotor motor4(4, MOTOR34_1KHZ);
 
 char command;
 
-void setup()
-{
+void setup() {
+  Serial.begin(9600);
   bluetoothSerial.begin(9600);  //Set the baud rate to your Bluetooth module.
 }
 
 void loop() {
   if (bluetoothSerial.available() > 0) {
     command = bluetoothSerial.read();
+    Serial.println(command);
 
     Stop(); //initialize with motors stoped
     
